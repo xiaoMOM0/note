@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>文档 on 小尛の博客</title>
+    <link>http://localhost:1313/tags/%E6%96%87%E6%A1%A3/</link>
+    <description>Recent content in 文档 on 小尛の博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2024 XIAOMO</copyright>
+    <lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/%E6%96%87%E6%A1%A3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>缩略图</title>
+      <link>http://localhost:1313/posts/thumbnails/</link>
+      <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/thumbnails/</guid>
+      <description>缩略图 # Blowfish 对视觉支持进行了增强，可以让你轻松地为文章添加缩略图。你只需要将一个以 feature* 开头的图像文件（支持几乎所有格式，但更推荐 .</description>
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:1313/posts/thumbnails/featured.svg" />
+    </item>
+    
+  </channel>
+</rss>
