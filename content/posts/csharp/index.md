@@ -1,8 +1,16 @@
 ---
-title: "csharp"
+title: "c#"
 date: 2024-06-09
-draft: false
 description: "学习csharp中"
-slug: "语言"
-tags: ["语言"]
+
+cascade:
+  showDate: true
+  showAuthor: false
+  invertPagination: true
+---
+
+{{< lead >}}
+学习中。。。
+{{< /lead >}}
+
 ---
