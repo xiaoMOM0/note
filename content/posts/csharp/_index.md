@@ -5,7 +5,7 @@ description: "学习csharp中"
 
 cascade:
   showDate: true
-  showAuthor: false
+  showAuthor: true
   invertPagination: true
 ---
 
