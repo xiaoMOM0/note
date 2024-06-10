@@ -178,7 +178,152 @@ struct name
 };
 ```
 
+# 十、类
+```cs
+<访问修饰符> class class_name
+{
+    // 成员变量
+    <访问修饰符> <type> var1;
+    <访问修饰符> <type> var2;
+    ...
+    // 成员方法
+    <访问修饰符> <return type> method1(参数列表){
+        ...
+    }
+}
+```
+- 访问修饰符: 类(默认 internal), 成员(默认 private)
+
+```cs
+class Box
+{
+    private int var;
+    public Box()
+    {
+        Console.WriteLine("对象已创建");
+    }
+
+    ~Box // 析构函数
+    {
+        Console.WriteLine("对象已删除");
+    }
+}
+
+```
+
+## 静态成员
+定义静态变量后,多个对象到只有同一个静态变量(静态函数在对象被创建之前就已经存在)
+
+## 继承
+```cs
+<访问修饰符> class <基类>
+{
+    ...
+}
+
+class <派生类> : <基类>
+{
+    ...
+}
+
+```
+派生类会继承基类(变量,方法), 通过`base`来调用基类的构造函数和方法
+```cs
+
+class <派生类> : <基类>
+{
+    pulic <派生类>(参数): base(传参)
+    { }
+    base.Method();
+}
+
+```
+## 继承接口
+```cs
+using System;
+
+// 定义一个基接口
+interface BaseI
+{
+    void Method1();
+}
+
+// 定义一个派生接口, 继承自基接口
+interface I : BaseI
+{
+    void Method2();
+}
+
+// 实现派生接口的类
+class MyClass : I
+{
+    public void Method1()
+    {
+        Console.WriteLine("Method1 implementation");
+    }
+
+    public void Method2()
+    {
+        Console.WriteLine("Method2 implementation");
+    }
+}
+
+...
+MyClass obj = new MyClass();
+obj.Method1(); // 调用继承自基接口的方法
+obj.Method2(); // 调用派生接口新增的方法
+```
+> C#不支持多重继承, 只能用接口实现
+
+## 多态
+例1
+```cs
+public int Add(int a, int b, int c)
+{
+
+}
+
+public int Add(int a, int b)
+{
+
+}
+
+Console.WriteLine("add1:" + Add(1, 2));
+Console.WriteLine("add2:" + Add(1, 2, 3));
+```
+
+例2
+```cs
+
+public int ToInt(int a)
+{
+    Console.WriteLine("已经是int");
+    return a;
+}
+
+public int ToInt(float a)
+{
+    return (int)a;
+}
+
+```
+
 ## 类与结构
-- 类: 适合复杂的对象和行为(支持继承和多态性|可以有无参数构造)
-- 结构: 适合表示轻量级数据和值类型(提高性能和避免引用的管理开销|不可以无参数构造)
+- 类: 适合复杂的对象和行为
+    1. 支持继承和多态性
+    2. 可以有无参数构造
+    3. 可空
+- 结构: 适合表示轻量级数据和值类型
+    1. 提高性能和避免引用的管理开销
+    2. 不可以无参数构造
+    3. 不可空
+
+
+# 十一、枚举
+```cs
+enum <enum_name>
+{
+    enumeration list
+}
+```
 
