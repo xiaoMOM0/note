@@ -3,15 +3,14 @@ title = 'C#-语法'
 date = 2024-06-09T23:33:01+08:00
 draft = false
 +++
-# syntax
 
-## 一、输出
+# 一、输出
 ```cs
 Console.Write("Hello World!"); // 不换行
 Console.WriteLine("Hello World!"); // 换行
 ```
 
-## 二、变量
+# 二、变量
 `type 变量 = 值;`
 
 ```cs
@@ -19,7 +18,7 @@ int a = 10; \\ 初始化
 int b = 10, c; \\ 一次可以定义多个变量
 ```
 
-### 类型(常用)
+## 类型(常用)
 - bool(布尔型)
 - byte(0~255)/sbyte(-128~127)
 - short/int/long
@@ -27,16 +26,44 @@ int b = 10, c; \\ 一次可以定义多个变量
 - char
 - var(隐式声明)
 
-#### 引用类型
+### 数组
+`type[] arrayName`
+```cs
+int[] a = new int[3]; //初始化
+int[] b = {1, 2, 3}; //初始化
+int[] c = new int[3] {1, 2, 3}; //初始化
+
+/* 多维数组 */
+int [,] d = new int[2,3] {
+    {0, 1},
+    {2, 3},
+    {4, 5},
+}
+
+int val = d[0, 1]; // 访问
+```
+### 引用类型
 引用类型是一个内存位置(多个变量可以指向一个内存位置)
 - object(对象类型): 可分配任何类型(分配前进行类型转换)
 - dynamic(动态类型): 可存储任何类型的值(和object相似,但运行时类型检查)
-- string(字符串): (注: string为String的别名) (`@""`转义字符\\作普通字符对待,可任意换行)
+- [string](/posts/csharp/csharp字符串/) (字符串): (注: string为String的别名) (`@""`转义字符\\作普通字符对待,可任意换行)
 
-#### sizeof方法
+
+
+
+### 可空类型
+`?`使类型可赋值为`null`, `??`判断类型是否为`null`
+```cs
+int i; // 默认值0
+int? j; // 默认值null
+
+a = b ?? c; // 如果b为空,返回c
+```
+
+### sizeof方法
 用于获得类型的大小
 
-#### 指针类型
+### 指针类型
 同C指针
 
 `type* 标识符`
@@ -46,13 +73,13 @@ int b = 10, c; \\ 一次可以定义多个变量
 char* cptr;
 ```
 
-## 三、类型转化
-### 隐式类型转换
+# 三、类型转化
+## 隐式类型转换
 ```cs
 int a = 10;
 long b = a; // 不需要显式转换
 ```
-### 显式类型转换
+## 显式类型转换
 ```cs
 long i = 10;
 int j = (int)i; // 需要使用强制类型转换
@@ -61,14 +88,97 @@ int intValue = 3;
 string strValue = intValue.ToString(); // int -> string
 ```
 
-### 转换方法
+## 转换方法
 - Convert.(ToDouble/ToInt16/ToInt32/ToInt64)
 - ToBoolean/ToString
 - ToByte/ToChar/ToDateTime/ToDecimal/ToSbyte/ToSingle/ToType
 - ToUInt16/ToUInt32/ToUInt64
 
-## 四、变量作用域
+# 四、作用域
 作用域通常由花括号`{}`定义的代码块来确定(类似rust)
 
-## Tips
+# Tips
 `typeof()` 返回类型, `&` 返回地址, `*` 变量的指针, `is` 判断是否为某一类型, `as` 强制转换(失则也不抛出错误)
+
+# 五、判断
+## if
+```cs
+if(boolean_expression_1)
+{
+    ...
+} else if (boolean_expression_2)
+{
+    ...
+} else
+{
+    ...
+}
+```
+
+# 六、循环
+## while 
+```cs
+while (condition)
+{
+    ...
+}
+```
+## for
+```cs
+for (init; condition; increment) {
+    ...
+}
+
+foreach (var item in collection) {
+    ...
+}
+```
+## 控制语句
+- break: 终止循环
+- continue: 跳过本轮循环
+
+# 七、封装
+封装可以方止对细节的访问
+## 修饰符
+- public: 所有对象都能访问
+- internal: 同一个程序集对象能访问
+- protected: 该对象及其子类才能访问
+- private: 该对象本身才能访问
+```cs
+class Rect
+{
+    private double length;
+    private double width;
+    
+    public void InitValue()
+    {
+        Console.WriteLine("请输入长度:");
+        length = Convert.ToDouble(Console.ReadLine());
+        Console.WriteLine("请输入宽度:");
+        width = Convert.ToDouble(Console.ReadLine());
+    }
+}
+```
+
+# 八、方法
+## 定义
+```cs
+<访问修饰符> <返回类型> <方法名称>(参数列表)
+{
+    ...
+}
+```
+
+# 九、结构
+```cs
+struct name
+{
+    <访问修饰符> <返回类型> <字段名>;
+    ...
+};
+```
+
+## 类与结构
+- 类: 适合复杂的对象和行为(支持继承和多态性|可以有无参数构造)
+- 结构: 适合表示轻量级数据和值类型(提高性能和避免引用的管理开销|不可以无参数构造)
+
